@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Cuentis - Personalized Stories for Kids"
+    />
+    <title>
+      Cuentis - Personalized Stories for Kids / Cuentos personalizados para
+      niños
+    </title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- FontAwesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      body {
+        background: #dbeafe; /* Light pastel blue */
+        color: #333;
+        font-family: "Poppins", sans-serif;
+      }
+      header {
+        background: #ffe4e1; /* Light Peach */
+        color: #333;
+        padding: 4em 0;
+        text-align: center;
+      }
+      header h1 {
+        font-size: 3em;
+        color: #ff6f61; /* Soft Coral */
+      }
+      header p {
+        font-size: 1.2em;
+        color: #333;
+      }
+      .cta-button {
+        background: #ff6f61; /* Soft Coral */
+        color: white;
+        border: none;
+        padding: 0.8em 2em;
+        font-size: 1.2em;
+        border-radius: 5px;
+        margin-top: 1em;
+        transition: background 0.3s ease;
+      }
+      .cta-button:hover {
+        background: #ff806e;
+      }
+      .lang-switcher {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        font-size: 1.5em;
+        color: white;
+        background: #ff6f61;
+        border: none;
+        padding: 0.5em 1em;
+        border-radius: 5px;
+      }
+      .container {
+        background: white;
+        padding: 2em;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .feature-icon {
+        font-size: 3em;
+        color: #ff6f61; /* Soft Coral */
+      }
+      footer {
+        text-align: center;
+        padding: 2em;
+        background: #f0f4f8; /* Soft Gray */
+        color: #333;
+      }
+      footer a {
+        color: #ff6f61; /* Soft Coral */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Language Switcher -->
+    <button class="lang-switcher" onclick="switchLanguage()">Español</button>
+
+    <!-- Header Section -->
+    <header>
+      <h1 id="header-title">Cuentis</h1>
+      <p id="header-subtitle">
+        Your personalized storytelling assistant for kids
+      </p>
+      <button
+        onclick="window.open('http://wa.me/+14155238886?text=join%20lift-north', '_blank')"
+        class="cta-button"
+        id="header-cta"
+      >
+        Try Cuentis Now
+      </button>
+    </header>
+
+    <!-- About Section -->
+    <section class="container my-5">
+      <h2 id="about-title" class="text-center">What is Cuentis?</h2>
+      <p id="about-description" class="lead text-center">
+        Cuentis is a chatbot designed to create personalized stories for
+        children, making bedtime more magical and engaging. Just tell Cuentis
+        about your child’s preferences, and it will weave a unique tale every
+        time.
+      </p>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="container my-5">
+      <h2 id="how-it-works-title" class="text-center">How It Works</h2>
+      <div class="row text-center">
+        <div class="col-md-4">
+          <i class="fas fa-child feature-icon"></i>
+          <h4 id="step1-title">Tell us about your child</h4>
+          <p id="step1-desc">
+            Share some details about your child’s preferences, favorite
+            characters, and more.
+          </p>
+        </div>
+        <div class="col-md-4">
+          <i class="fas fa-book-open feature-icon"></i>
+          <h4 id="step2-title">Get a unique story</h4>
+          <p id="step2-desc">
+            Cuentis will generate a unique story tailored to your child’s
+            interests.
+          </p>
+        </div>
+        <div class="col-md-4">
+          <i class="fas fa-moon feature-icon"></i>
+          <h4 id="step3-title">Enjoy bedtime magic</h4>
+          <p id="step3-desc">
+            Sit back, relax, and let your child be enchanted by a magical story!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call-to-Action Section -->
+    <section class="container text-center my-5">
+      <h2 id="cta-title">Ready to make bedtime magical?</h2>
+      <button
+        onClick="window.open('http://wa.me/+14155238886?text=join%20lift-north', '_blank')"
+        class="cta-button"
+        id="cta-button"
+      >
+        Start Your Story Now
+      </button>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+      <p id="footer-disclaimer">
+        <strong>Disclaimer:</strong> Cuentis is currently in beta. For any
+        feedback or suggestions, feel free to reach out to
+        <a href="mailto:rodrigouroz@gmail.com">rodrigouroz@gmail.com</a>.
+      </p>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+    <!-- Language Detection and Switching Script -->
+    <script>
+      const translations = {
+        en: {
+          headerTitle: "Cuentis",
+          headerSubtitle: "Your personalized storytelling assistant for kids",
+          headerCta: "Try Cuentis Now",
+          aboutTitle: "What is Cuentis?",
+          aboutDescription:
+            "Cuentis is a chatbot designed to create personalized stories for children, making bedtime more magical and engaging. Just tell Cuentis about your child’s preferences, and it will weave a unique tale every time.",
+          howItWorksTitle: "How It Works",
+          step1Title: "Tell us about your child",
+          step1Desc:
+            "Share some details about your child’s preferences, favorite characters, and more.",
+          step2Title: "Get a unique story",
+          step2Desc:
+            "Cuentis will generate a unique story tailored to your child’s interests.",
+          step3Title: "Enjoy bedtime magic",
+          step3Desc:
+            "Sit back, relax, and let your child be enchanted by a magical story!",
+          ctaTitle: "Ready to make bedtime magical?",
+          footerDisclaimer:
+            "<strong>Disclaimer:</strong> Cuentis is currently in beta. For any feedback or suggestions, feel free to reach out to <a href='mailto:rodrigouroz@gmail.com'>rodrigouroz@gmail.com</a>.",
+        },
+        es: {
+          headerTitle: "Cuentis",
+          headerSubtitle: "Tu asistente de cuentos personalizados para niños",
+          headerCta: "Prueba Cuentis Ahora",
+          aboutTitle: "¿Qué es Cuentis?",
+          aboutDescription:
+            "Cuentis es un chatbot diseñado para crear historias personalizadas para niños, haciendo la hora de dormir más mágica y entretenida. Simplemente cuéntale a Cuentis las preferencias de tu hijo, y él creará un cuento único cada vez.",
+          howItWorksTitle: "¿Cómo Funciona?",
+          step1Title: "Cuéntanos sobre tu hijo",
+          step1Desc:
+            "Comparte algunos detalles sobre las preferencias de tu hijo, personajes favoritos y más.",
+          step2Title: "Obtén un cuento único",
+          step2Desc:
+            "Cuentis generará un cuento único adaptado a los intereses de tu hijo.",
+          step3Title: "Disfruta la magia de dormir",
+          step3Desc:
+            "Relájate y deja que tu hijo se maraville con una historia mágica.",
+          ctaTitle: "¿Listo para hacer la hora de dormir mágica?",
+          footerDisclaimer:
+            "<strong>Aviso:</strong> Cuentis está actualmente en fase beta. Para cualquier comentario o sugerencia, no dudes en escribir a <a href='mailto:rodrigouroz@gmail.com'>rodrigouroz@gmail.com</a>.",
+        },
+      };
+
+      let currentLang = navigator.language.startsWith("es") ? "es" : "en";
+
+      function applyTranslations() {
+        const translation = translations[currentLang];
+        document.getElementById("header-title").innerText =
+          translation.headerTitle;
+        document.getElementById("header-subtitle").innerText =
+          translation.headerSubtitle;
+        document.getElementById("header-cta").innerText = translation.headerCta;
+        document.getElementById("about-title").innerText =
+          translation.aboutTitle;
+        document.getElementById("about-description").innerText =
+          translation.aboutDescription;
+        document.getElementById("how-it-works-title").innerText =
+          translation.howItWorksTitle;
+        document.getElementById("step1-title").innerText =
+          translation.step1Title;
+        document.getElementById("step1-desc").innerText = translation.step1Desc;
+        document.getElementById("step2-title").innerText =
+          translation.step2Title;
+        document.getElementById("step2-desc").innerText = translation.step2Desc;
+        document.getElementById("step3-title").innerText =
+          translation.step3Title;
+        document.getElementById("step3-desc").innerText = translation.step3Desc;
+        document.getElementById("cta-title").innerText = translation.ctaTitle;
+        document.getElementById("cta-button").innerText = translation.headerCta;
+        document.getElementById("footer-disclaimer").innerHTML =
+          translation.footerDisclaimer;
+
+        document.querySelector(".lang-switcher").innerText =
+          currentLang === "en" ? "Español" : "English";
+      }
+
+      function switchLanguage() {
+        currentLang = currentLang === "en" ? "es" : "en";
+        applyTranslations();
+      }
+
+      document.addEventListener("DOMContentLoaded", applyTranslations);
+    </script>
+  </body>
+</html>
