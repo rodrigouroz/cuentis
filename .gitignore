@@ -3,3 +3,5 @@ node_modules
 *.sqlite3
 dist/
 *.log
+# Sentry Config File
+.sentryclirc
