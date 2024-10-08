@@ -15,6 +15,7 @@ import {
   User,
 } from "./models/user";
 import { addUserFact } from "./models/userFacts";
+import logger from "./logger";
 
 const DEBUG = 0;
 
@@ -44,7 +45,7 @@ export const handleIncomingMessage = async (ctx: Context) => {
 
   const assistant = new StoryAssistant(user);
 
-  console.log(`User request: ${Body}`);
+  logger.info(`User request: ${Body}`);
 
   assistant.handleTextMessage(
     Body,
@@ -61,7 +62,7 @@ const handleAssistantResponse = async (
   response: StoryAssistantAnswer
 ) => {
   if (!user.language) {
-    console.log(`Setting user language to ${response.language}`);
+    logger.debug(`Setting user language to ${response.language}`);
     user.language = response.language;
     await updateUserLanguage(user.userId, user.language);
   }
@@ -75,7 +76,7 @@ const handleAssistantResponse = async (
 
   const answer = response.content;
 
-  console.log(`Assistant response: ${JSON.stringify(answer)}`);
+  logger.info(`Assistant response: ${JSON.stringify(answer)}`);
 
   response.facts.forEach(
     async (fact: string) => await addUserFact(user.userId, fact)
@@ -84,7 +85,7 @@ const handleAssistantResponse = async (
   if (response.type === "conversation") {
     await sendWhatsAppAnswer(From, answer);
   } else {
-    console.log("Generating story");
+    logger.debug("Generating story");
     await decreaseCredit(user.userId);
 
     setImmediate(async () => {
@@ -97,7 +98,7 @@ const handleAssistantResponse = async (
       await fs.promises.writeFile(audioFilePath, audioBuffer);
 
       const audioUrl = `https://informed-usually-horse.ngrok-free.app/audio/${audioId}.ogg`;
-      console.log(`Audio URL: ${audioUrl}`);
+      logger.debug(`Audio URL: ${audioUrl}`);
       await sendWhatsAppAnswer(From, undefined, audioUrl);
     });
   }
@@ -110,9 +111,9 @@ const sendWhatsAppAnswer = async (
   audioUrl?: string
 ) => {
   if (DEBUG) {
-    console.log(`Sending message to ${to}`);
-    console.log(`Content: ${content}`);
-    console.log(`Audio URL: ${audioUrl}`);
+    logger.debug(`Sending message to ${to}`);
+    logger.debug(`Content: ${content}`);
+    logger.debug(`Audio URL: ${audioUrl}`);
     return;
   }
   await twilioClient.messages.create({

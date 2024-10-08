@@ -3,6 +3,7 @@ import os from "os";
 import path from "path";
 import Router from "koa-router";
 import { handleIncomingMessage } from "./handlers";
+import { getHealthStats } from "./health";
 
 const router = new Router();
 
@@ -24,6 +25,10 @@ router.get("/audio/:id.ogg", async (ctx) => {
     ctx.status = 404;
     ctx.body = "Audio file not found";
   }
+});
+
+router.get("/health", async (ctx) => {
+  ctx.body = await getHealthStats();
 });
 
 export default router;

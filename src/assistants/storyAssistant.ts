@@ -1,3 +1,4 @@
+import logger from "../logger";
 import { User } from "../models/user";
 import { getThreadId, setThreadId } from "../sessionStore";
 import openai from "./openAI";
@@ -32,7 +33,7 @@ export default class StoryAssistant {
 
       threadId = newThread.id;
       setThreadId(this.user.userId, threadId);
-      console.log(
+      logger.info(
         `Created new thread ${threadId} for user ${this.user.userId}`
       );
     }
@@ -47,13 +48,13 @@ export default class StoryAssistant {
     const threadId = await this.getThread();
 
     // Send the message to the appropriate thread
-    console.log("Sending message to thread");
+    logger.debug("Sending message to thread");
     await openai.beta.threads.messages.create(threadId, {
       role: "user",
       content: message,
     });
 
-    console.log("Running assistant");
+    logger.debug("Running assistant");
     const runOptions = {
       assistant_id: "asst_6vJbY94wdyzupBxche2c49Yq",
       ...(this.user?.facts.length && {
@@ -62,11 +63,11 @@ export default class StoryAssistant {
         )}`,
       }),
     };
-    console.log("Run options", runOptions);
+    logger.debug("Run options", runOptions);
     const run = openai.beta.threads.runs
       .stream(threadId, runOptions)
       .on("textDone", (content) => {
-        console.log("Message done", content.value);
+        logger.debug("Message done", content.value);
 
         handleAssistantResponse(JSON.parse(content.value));
       });

@@ -1,4 +1,5 @@
 import db from "../dbClient";
+import logger from "../logger";
 import { getUserFacts } from "./userFacts";
 
 // Define the `User` type
@@ -26,10 +27,10 @@ async function getUserById(userId: string): Promise<User> {
     return { ...user, facts };
   } else {
     // return a new user
-    console.log(`Creating new user ${userId}`);
+    logger.info(`Creating new user ${userId}`);
     user = {
       userId,
-      credits: 0,
+      credits: 5,
       facts: [],
     };
     await addUser(userId);
