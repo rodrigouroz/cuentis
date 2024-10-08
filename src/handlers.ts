@@ -97,7 +97,7 @@ const handleAssistantResponse = async (
       // Write the audio buffer to a temporary file
       await fs.promises.writeFile(audioFilePath, audioBuffer);
 
-      const audioUrl = `https://informed-usually-horse.ngrok-free.app/audio/${audioId}.ogg`;
+      const audioUrl = `${process.env.EXTERNAL_AUDIO_URL}/audio/${audioId}.ogg`;
       logger.debug(`Audio URL: ${audioUrl}`);
       await sendWhatsAppAnswer(From, undefined, audioUrl);
     });
