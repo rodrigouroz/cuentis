@@ -11,8 +11,8 @@ export interface User {
 }
 
 // Insert a new user into the `user` table
-async function addUser(userId: string, language?: string): Promise<void> {
-  await db("user").insert({ userId, language });
+async function addUser(userId: string, credits: number): Promise<void> {
+  await db("user").insert({ userId, credits });
 }
 
 async function decreaseCredit(userId: string): Promise<void> {
@@ -33,7 +33,7 @@ async function getUserById(userId: string): Promise<User> {
       credits: 5,
       facts: [],
     };
-    await addUser(userId);
+    await addUser(userId, user.credits);
   }
 
   return user;
