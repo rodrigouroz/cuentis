@@ -67,7 +67,7 @@ const handleAssistantResponse = async (
     await updateUserLanguage(user.userId, user.language);
   }
 
-  if (user.credits === 0) {
+  if (user.credits <= 0) {
     const language = user.language as "english" | "spanish" | "default";
     const message = await generateNoCreditsResponse(language);
     await sendWhatsAppAnswer(From, message);

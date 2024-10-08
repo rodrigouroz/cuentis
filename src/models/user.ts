@@ -30,7 +30,7 @@ async function getUserById(userId: string): Promise<User> {
     logger.info(`Creating new user ${userId}`);
     user = {
       userId,
-      credits: 5,
+      credits: 12,
       facts: [],
     };
     await addUser(userId, user.credits);
