@@ -27,5 +27,6 @@ module.exports = {
     migrations: {
       tableName: "knex_migrations",
     },
+    useNullAsDefault: true,
   },
 };
